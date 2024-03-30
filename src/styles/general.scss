@@ -1,0 +1,41 @@
+@use './partials/variables' as *;
+@import "bootstrap/scss/bootstrap";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #060918;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+.p-28 {
+    padding: 15rem;
+}
+
+.px-10 {
+    padding: 0 6rem;
+}
+
+.pt-10 {
+    padding-top: 8rem;
+}
+
+.my_color_purple {
+    color: #784adb;
+}
+
+.btn-primary {
+    background-color: #784adb;
+    border: none;
+    transition: ease-in 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #3f139e;
+    transform: scale(1.2);
+}
