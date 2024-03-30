@@ -2,6 +2,7 @@
 
 import { computeStyles } from "@popperjs/core";
 import { RouterView } from "vue-router";
+import { store } from "../store.js";
 
 export default {
     components: {
@@ -10,6 +11,7 @@ export default {
     name: "AppHeader",
     data() {
         return {
+            store,
             menuItems: [
                 {
                     routeName: 'home',
@@ -18,6 +20,10 @@ export default {
                 {
                     routeName: 'portfolio',
                     label: 'PORTFOLIO'
+                },
+                {
+                    routeName: 'admin',
+                    label: 'ADMIN'
                 },
             ]
         }
@@ -40,7 +46,8 @@ export default {
                                     {{ item.label }}
                                 </router-link></b>
                         </li>
-                        <li class="nav-link text-white"><i class="fa-solid fa-user"></i></li>
+                        <!-- <li class="nav-link my_item text-white"><a class="text-white text-decoration-none"
+                                :href="store.urlBackend + 'register/'" target="_blank"><b>ADMIN</b></a></li> -->
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-link text-white my_name">GABRIEL PINO</li>

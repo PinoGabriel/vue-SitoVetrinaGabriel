@@ -16,31 +16,33 @@ export default {
             formSubmitted: false,
             submitError: false,
             submitSuccess: false,
-            inviaClicked: false,
         };
     },
     methods: {
         async VueSubmitForm(event) {
+            console.log("VueSubmitForm called");
             let url = this.store.urlBackend + this.store.apiCreateEndpoint;
             event.preventDefault();
             this.formSubmitted = true;
             this.submitError = false;
-            if (this.inviato()) {
-                this.inviaClicked = true;
-            }
+
             try {
-                const response = await axios.post(url, this.formData);
+                // Controlla se il modulo è valido prima di inviarlo
+                if (!this.inviato()) {
+                    return;
+                }
+
+                // Fai una copia della formData
+                const formDataCopy = { ...this.formData };
+
+                const response = await axios.post(url, formDataCopy);
                 console.log(response.data);
-                // Se la risposta indica il successo dell'operazione, mostra il popup di successo
                 this.submitSuccess = true;
-                // Ripristina il modulo se necessario
                 this.resetForm();
             } catch (error) {
                 console.error(error);
                 this.submitError = true;
                 console.log('Submiterrore: ', this.submitError, 'SubmitSuccess: ', this.submitSuccess, 'Form submitted: ', this.formSubmitted);
-                console.log('inviato: ', this.inviato());
-                console.log('inviaClicked: ', this.inviaClicked);
             }
         },
 
@@ -61,7 +63,8 @@ export default {
         },
 
         inviato() {
-            return this.formData.name.length >= 3 &&
+            return this.formSubmitted &&
+                this.formData.name.length >= 3 &&
                 this.formData.name.length <= 255 &&
                 this.isValidEmail(this.formData.email) &&
                 this.formData.email.length <= 255 &&
@@ -71,13 +74,11 @@ export default {
         closePopupError() {
             this.formSubmitted = false;
             this.submitError = false;
-            this.inviaClicked = false;
         },
 
         closePopupSuccess() {
             this.formSubmitted = false;
             this.submitSuccess = false;
-            this.inviaClicked = false;
             this.$router.push('/');
         }
     }
@@ -87,7 +88,7 @@ export default {
 <template>
     <section>
         <div class="container d-flex flex-column justify-content-center pt-10" :class="{
-            'blur-effect': inviaClicked && (submitSuccess || (submitError && inviato()))
+            'blur-effect': submitSuccess || submitError
         }">
             <h5 class="my_color_purple">Compila il form per mandarmi un messaggio:</h5>
             <form class="mt-5" @submit.prevent="VueSubmitForm" method="post">
@@ -95,21 +96,21 @@ export default {
                     <label for="name" class="form-label">Nome*</label>
                     <input type="text" class="form-control w-50" id="username" name="name" v-model="formData.name"
                         required>
-                    <div v-if="formSubmitted && formData.name.length < 3 && inviato()" class="text-danger">Il nome deve
-                        essere di almeno 3 caratteri</div>
-                    <div v-if="formSubmitted && formData.name.length > 255 && inviato()" class="text-danger">Il nome non
-                        può superare
-                        i 255 caratteri</div>
+                    <div v-if="formSubmitted && (formData.name.length < 3 || formData.name.length > 255)"
+                        class="text-danger">
+                        <template v-if="formData.name.length < 3">Il nome deve essere di almeno 3 caratteri</template>
+                        <template v-if="formData.name.length > 255">Il nome non può superare i 255 caratteri</template>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email*</label>
                     <input type="email" name="email" class="form-control w-50" id="userEmail"
                         aria-describedby="emailHelp" v-model="formData.email" required>
-                    <div v-if="formSubmitted && formData.email.length > 255 && inviato()" class="text-danger">L'email
+                    <div v-if="formSubmitted && formData.email.length > 255" class="text-danger">L'email
                         non può
                         superare
                         i 255 caratteri</div>
-                    <div v-if="formSubmitted && !isValidEmail(formData.email) && inviato()" class="text-danger">L'email
+                    <div v-if="formSubmitted && !isValidEmail(formData.email)" class="text-danger">L'email
                         non è valida
                     </div>
                 </div>
@@ -121,10 +122,13 @@ export default {
                         superare
                         i 2000 caratteri</div>
                 </div>
-                <button type="submit" class="btn btn-primary" @click="inviato()">Invia</button>
+                <button type="submit" class="btn btn-primary">Invia</button>
+                {{ console.log("SubmitSuccess: ", submitSuccess, "SubmitError: ", submitError, "Form submitted: ",
+            formSubmitted, 'inviato: ', inviato()) }}
             </form>
         </div>
-        <div v-if="formSubmitted && submitError && inviaClicked" class="myPopup">
+        <div v-if="formSubmitted && submitError" class="myPopup">
+            {{ console.log("Mostra popup di errore") }}
             <div class="cookiesContent" id="cookiesPopup">
                 <button @click="closePopupError" class="close">✖</button>
                 <img src="https://www.freeiconspng.com/thumbs/error-icon/error-icon-4.png" alt="cookies-img" />
@@ -132,7 +136,8 @@ export default {
                 <button @click="closePopupError" class="accept">Torna indietro</button>
             </div>
         </div>
-        <div v-if="formSubmitted && submitSuccess && inviaClicked" class="myPopup">
+        <div v-if="formSubmitted && submitSuccess" class="myPopup">
+            {{ console.log("Mostra popup di successo") }}
             <div class="cookiesContent" id="cookiesPopup">
                 <button @click="closePopupSuccess" class="close">✖</button>
                 <img src="https://cdn-icons-png.freepik.com/256/190/190411.png" alt="cookies-img" />
