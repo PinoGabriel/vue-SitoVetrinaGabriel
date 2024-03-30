@@ -11,22 +11,22 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            name: 'home',
+            name: 'Home',
             component: Home,
         },
         {
             path: '/portfolio',
-            name: 'portfolio',
+            name: 'Portfolio',
             component: Portfolio,
         },
         {
             path: '/contatti',
-            name: 'contatti',
+            name: 'Contatti',
             component: Contatti,
         },
         {
             path: '/admin',
-            name: 'admin',
+            name: 'Admin',
             component: () => import('./pages/Home.vue')
         }
     ]
@@ -34,7 +34,7 @@ const router = createRouter({
 
 router.afterEach((to) => {
     // Verifica se il link cliccato è quello per l'amministrazione
-    if (to.name === 'admin') {
+    if (to.name === 'Admin') {
         // Apre il link in una nuova finestra
         window.open(store.urlBackend + 'register/', '_blank');
     }

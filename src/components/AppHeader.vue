@@ -14,15 +14,15 @@ export default {
             store,
             menuItems: [
                 {
-                    routeName: 'home',
+                    routeName: 'Home',
                     label: 'HOME'
                 },
                 {
-                    routeName: 'portfolio',
+                    routeName: 'Portfolio',
                     label: 'PORTFOLIO'
                 },
                 {
-                    routeName: 'admin',
+                    routeName: 'Admin',
                     label: 'ADMIN'
                 },
             ]
@@ -54,7 +54,8 @@ export default {
                     </ul>
                     <ul class="navbar-nav">
                         <a><router-link class="nav-link text-white my_contact"
-                                :to="{ name: 'contatti' }">Contattami</router-link></a>
+                                :class="{ active: $route.name == 'Contatti' }"
+                                :to="{ name: 'Contatti' }">Contattami</router-link></a>
                     </ul>
                 </div>
             </div>
@@ -105,6 +106,14 @@ export default {
     border: 1px solid #784adb;
     transform: scale(1.1);
 }
+
+.active {
+    background-color: #784adb;
+    border: 1px solid #784adb;
+    transform: scale(1.1);
+}
+
+
 
 .my_item:hover {
     border-bottom: 3px solid #784adb;

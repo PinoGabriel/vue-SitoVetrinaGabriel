@@ -11,7 +11,7 @@ export default {
 				},
 				{
 					title: "YouTube - Grafico/Assistente/Editor/Gestore (Mar 2022 - Ago 2023)",
-					description: "Ho collaborato con un noto Youtuber del settore criptovalute, gestendo la ricerca di tendenze di mercato, la creazione di grafiche, l&apos;editing di video brevi(reels/tiktok), l&apos;interazione e la gestione della community."
+					description: "Ho collaborato con un noto Youtuber del settore criptovalute, gestendo la ricerca di tendenze di mercato, la creazione di grafiche, l&apos;editing di video brevi(reels/tiktok), l'interazione e la gestione della community."
 				},
 				{
 					title: "Blacksmith Italia - Designer grafico (Ott 2020 - Mar 2022)",
