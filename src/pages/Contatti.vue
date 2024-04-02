@@ -12,13 +12,29 @@ export default {
                 name: '',
                 email: '',
                 message: '',
+                selectedUser: null,
             }),
+            users: [],
             formSubmitted: false,
             submitError: false,
             submitSuccess: false,
         };
     },
+    mounted() {
+        this.getUsers(); // Chiamata alla funzione getUsers quando il componente è montato
+    },
     methods: {
+        async getUsers() {
+            let url = this.store.urlBackend + this.store.apiGetUsersEndpoint;
+            try {
+                const response = await axios.get(url);
+                this.users = response.data;
+                console.log('Utenti:', this.users);
+            } catch (error) {
+                console.error(error);
+                // Gestisci eventuali errori nel recupero degli utenti
+            }
+        },
         async VueSubmitForm(event) {
             console.log("VueSubmitForm called");
             let url = this.store.urlBackend + this.store.apiCreateEndpoint;
@@ -33,7 +49,10 @@ export default {
                 }
 
                 // Fai una copia della formData
-                const formDataCopy = { ...this.formData };
+                const formDataCopy = {
+                    ...this.formData,
+                    user_id: this.formData.selectedUser // Aggiorna selectedUser nel formDataCopy
+                };
 
                 const response = await axios.post(url, formDataCopy);
                 console.log(response.data);
@@ -50,7 +69,8 @@ export default {
             this.formData = {
                 name: '',
                 email: '',
-                message: ''
+                message: '',
+                selectedUser: null
             }
         },
 
@@ -68,7 +88,8 @@ export default {
                 this.formData.name.length <= 255 &&
                 this.isValidEmail(this.formData.email) &&
                 this.formData.email.length <= 255 &&
-                this.formData.message.length <= 2000;
+                this.formData.message.length <= 2000 &&
+                this.formData.selectedUser !== null;
         },
 
         closePopupError() {
@@ -121,6 +142,16 @@ export default {
                     <div v-if="formSubmitted && formData.message.length > 2000" class="text-danger">Il messaggio non può
                         superare
                         i 2000 caratteri</div>
+                </div>
+                <div class="mb-3">
+                    <label for="user" class="form-label">Seleziona a chi inviare il messaggio*</label>
+                    <select class="form-select w-50" v-model="formData.selectedUser" name="user_id">
+                        <option value="" disabled>Scegli un utente</option>
+                        <option v-for="user in users" :key="user.id" :value="user.id">{{ user.name }}</option>
+                    </select>
+                    <div v-if="formSubmitted && formData.selectedUser === null" class="text-danger">Seleziona un
+                        utente
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Invia</button>
                 {{ console.log("SubmitSuccess: ", submitSuccess, "SubmitError: ", submitError, "Form submitted: ",
