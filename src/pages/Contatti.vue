@@ -111,12 +111,11 @@ export default {
         <div class="container d-flex flex-column justify-content-center pt-10" :class="{
             'blur-effect': submitSuccess || submitError
         }">
-            <h5 class="my_color_purple">Compila il form per mandarmi un messaggio:</h5>
-            <form class="mt-5" @submit.prevent="VueSubmitForm" method="post">
+            <h5 class="my_color_purple col-xl-6">Compila il form per mandarmi un messaggio:</h5>
+            <form class="mt-5 col-xl-6" @submit.prevent="VueSubmitForm" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome*</label>
-                    <input type="text" class="form-control w-50" id="username" name="name" v-model="formData.name"
-                        required>
+                    <input type="text" class="form-control" id="username" name="name" v-model="formData.name" required>
                     <div v-if="formSubmitted && (formData.name.length < 3 || formData.name.length > 255)"
                         class="text-danger">
                         <template v-if="formData.name.length < 3">Il nome deve essere di almeno 3 caratteri</template>
@@ -125,8 +124,8 @@ export default {
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email*</label>
-                    <input type="email" name="email" class="form-control w-50" id="userEmail"
-                        aria-describedby="emailHelp" v-model="formData.email" required>
+                    <input type="email" name="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                        v-model="formData.email" required>
                     <div v-if="formSubmitted && formData.email.length > 255" class="text-danger">L'email
                         non può
                         superare
@@ -137,15 +136,15 @@ export default {
                 </div>
                 <div class="mb-3">
                     <label for="message" class="form-label">Messaggio</label>
-                    <textarea class="form-control w-50" id="userMessage" rows="5" name="message"
-                        v-model="formData.message" required></textarea>
+                    <textarea class="form-control" id="userMessage" rows="5" name="message" v-model="formData.message"
+                        required></textarea>
                     <div v-if="formSubmitted && formData.message.length > 2000" class="text-danger">Il messaggio non può
                         superare
                         i 2000 caratteri</div>
                 </div>
                 <div class="mb-3">
                     <label for="user" class="form-label">Seleziona a chi inviare il messaggio*</label>
-                    <select class="form-select w-50" v-model="formData.selectedUser" name="user_id">
+                    <select class="form-select" v-model="formData.selectedUser" name="user_id">
                         <option value="" disabled>Scegli un utente</option>
                         <option v-for="user in users" :key="user.id" :value="user.id">{{ user.name }}</option>
                     </select>

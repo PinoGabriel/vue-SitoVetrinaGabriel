@@ -32,8 +32,8 @@ export default {
 </script>
 
 <template>
-    <header class="container">
-        <nav class="navbar navbar-expand-lg my_bg w-75 my_position">
+    <header class="container d-flex justify-content-center pt-3">
+        <nav class="navbar navbar-expand-lg my_bg w-75">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,15 +75,13 @@ export default {
 <style scoped lang="scss">
 .my_bg {
     background-color: #06091880;
-    border: 1px solid #142058;
+    border: 2px solid #6629b6;
     border-radius: 2rem;
 }
 
-.my_position {
-    position: fixed;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.navbar-toggler {
+    background-color: #6629b6 !important;
+    border-radius: 2rem;
 }
 
 .my_name {
@@ -118,5 +116,24 @@ export default {
 .my_item:hover {
     border-bottom: 3px solid #784adb;
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 991px) {
+    .my_item:hover {
+        width: 30%;
+        transform: scale(1);
+    }
+
+    .my_contact:hover {
+        transform: scale(1);
+    }
+
+    .my_contact {
+        display: inline-block;
+    }
+
+    .active {
+        transform: scale(1);
+    }
 }
 </style>
