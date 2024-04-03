@@ -10,7 +10,8 @@ export default {
   },
   data() {
     return {
-      currentTheme: localStorage.getItem('theme-color')
+      currentTheme: localStorage.getItem('theme-color'),
+      showThemeOptions: false
     }
   },
   methods: {
@@ -23,7 +24,21 @@ export default {
   },
   created() {
     document.body.className = this.currentTheme;
+    if (this.$route.path === '/impostazioni') {
+      this.showThemeOptions = true;
+    }
+  },
+  watch: {
+    '$route'(to, from) {
+      // Controlla se la rotta corrente è "impostazioni" e imposta showThemeOptions su true
+      if (to.path === '/impostazioni') {
+        this.showThemeOptions = true;
+      } else {
+        this.showThemeOptions = false;
+      }
+    }
   }
+
 }
 
 
@@ -32,13 +47,20 @@ export default {
 <template>
   <div id="app" :class="currentTheme">
     <AppHeader />
-    <div class="theme-options my-bg">
-      <p class="fw-bold">Cambia Tema</p>
-      <div id="theme-purple" :class="{ 'active': currentTheme === 'theme-purple' }"
-        @click="switchTheme('theme-purple')">
+    <div class="container d-flex justify-content-center mt-5" v-if="showThemeOptions">
+      <div class="theme-options my-bg">
+        <section class="d-flex align-items-center">
+          <p class="fw-bold">Cambia Tema</p>
+          <div id="theme-purple" :class="{ 'active': currentTheme === 'theme-purple' }"
+            @click="switchTheme('theme-purple')">
+          </div>
+          <div id="theme-orange" :class="{ 'active': currentTheme === 'theme-orange' }"
+            @click="switchTheme('theme-orange')"></div>
+          <div id="theme-green" :class="{ 'active': currentTheme === 'theme-green' }"
+            @click="switchTheme('theme-green')">
+          </div>
+        </section>
       </div>
-      <div id="theme-orange" :class="{ 'active': currentTheme === 'theme-orange' }"
-        @click="switchTheme('theme-orange')"></div>
     </div>
     <router-view></router-view>
   </div>
@@ -48,4 +70,11 @@ export default {
 @use './styles/general.scss';
 </style>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media screen and (max-width: 1680px) {
+  .theme-options {
+    display: inline-block;
+  }
+
+}
+</style>

@@ -4,6 +4,7 @@ import { store } from './store.js';
 import Home from './pages/Home.vue'
 import Portfolio from './pages/Portfolio.vue'
 import Contatti from './pages/Contatti.vue';
+import Impostazioni from './pages/Impostazioni.vue';
 
 
 const router = createRouter({
@@ -23,6 +24,11 @@ const router = createRouter({
             path: '/contatti',
             name: 'Contatti',
             component: Contatti,
+        },
+        {
+            path: '/impostazioni',
+            name: 'Impostazioni',
+            component: Impostazioni
         },
         {
             path: '/admin',

@@ -22,6 +22,10 @@ export default {
                     label: 'PORTFOLIO'
                 },
                 {
+                    routeName: 'Impostazioni',
+                    label: 'IMPOSTAZIONI'
+                },
+                {
                     routeName: 'Admin',
                     label: 'ADMIN'
                 },

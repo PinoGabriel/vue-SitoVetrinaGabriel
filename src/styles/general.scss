@@ -19,6 +19,12 @@ body.theme-orange {
     font-family: "Montserrat", sans-serif;
 }
 
+body.theme-green {
+    background-color: #051810;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
 .p-28 {
     padding: 15rem;
 }
@@ -35,16 +41,9 @@ body.theme-orange {
 // header
 
 .theme-options {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    text-align: right;
+    display: inline-block;
     padding: 1rem;
-    border: 1px solid white;
-    border-radius: 2rem;
-    position: absolute;
-    top: 1rem;
-    right: 3rem;
+    text-align: center;
 
     p {
         margin: 0;
@@ -70,6 +69,10 @@ body.theme-orange {
 
     #theme-orange {
         background-color: #ff8a00;
+    }
+
+    #theme-green {
+        background-color: #3bae82;
     }
 }
 
@@ -182,6 +185,63 @@ body.theme-orange {
 
     .my-item:hover {
         border-bottom: 3px solid #d8873a;
+        transform: scale(1.1);
+    }
+}
+
+#app.theme-green {
+
+    .my_color_purple {
+        color: #3bae82;
+    }
+
+    .btn-primary {
+        background-color: #3bae82;
+        border: none;
+        transition: ease-in 0.2s;
+    }
+
+    .btn-primary:hover {
+        background-color: #256d51;
+        transform: scale(1.2);
+    }
+
+    .my-btn-about {
+        color: #3bae82;
+        border: 1px solid #256d51;
+        background-color: #256d514f;
+    }
+
+    .developer:hover+.designer {
+        display: block;
+        color: #256d51;
+    }
+
+    .my-bg {
+        background-color: #091d15;
+        border: 2px solid #1b8a5f;
+        border-radius: 2rem;
+    }
+
+    .navbar-toggler {
+        background-color: #1b8a5f !important;
+        border-radius: 2rem;
+    }
+
+    .my-contact:hover {
+        background-color: #3bae82;
+        border: 1px solid #3bae82;
+        transform: scale(1.1);
+    }
+
+    .clicked {
+        background-color: #3bae82;
+        border: 1px solid #3bae82;
+        transform: scale(1.1);
+    }
+
+    .my-item:hover {
+        border-bottom: 3px solid #3bae82;
         transform: scale(1.1);
     }
 }
