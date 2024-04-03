@@ -41,7 +41,7 @@ export default {
 				<img class="col-xl-6" src="/img/io.png" alt="ADA">
 				<div
 					class="col-xl-6 d-flex align-items-sm-center align-items-xl-start flex-column justify-content-center px-md-1 px-xl-5 py-md-5 py-xl-0">
-					<a href="#">ABOUT ME</a>
+					<a class="my-btn-about" href="#">ABOUT ME</a>
 					<h1 class="pt-4 developer">Developer</h1>
 					<h1 class="pt-4 designer">Designer</h1>
 					<p class="pt-2 text-sm-center text-lg-start">Sono Gabriel! Appassionato di tecnologia, sono un
@@ -91,20 +91,16 @@ export default {
 
 <style scoped lang="scss">
 section {
-	background-color: #060918;
 	color: white;
 }
 
-a {
+.my-btn-about {
 	text-decoration: none;
-	color: #784adb;
-	border: 1px solid #3F139E;
 	width: 120px;
 	text-align: center;
 	padding: 8px;
 	border-radius: 15px;
 	cursor: unset;
-	background-color: #3f139e52;
 }
 
 p {
@@ -133,11 +129,6 @@ i {
 	animation-duration: 4s
 }
 
-.developer:hover+.designer {
-	display: block;
-	color: #3F139E;
-}
-
 .line_right {
 	border-right: 1px solid white;
 }
@@ -146,10 +137,6 @@ i {
 	.vh-100 {
 		min-height: 200px;
 	}
-
-	/* 	.w-50 {
-		width: 100% !important;
-	} */
 
 	.px-10 {
 		padding: 1rem 1rem;

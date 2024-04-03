@@ -33,7 +33,7 @@ export default {
 
 <template>
     <header class="container d-flex justify-content-center pt-3">
-        <nav class="navbar navbar-expand-lg my_bg w-75">
+        <nav class="navbar navbar-expand-lg my-bg w-75">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@ export default {
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li v-for="(item, index) in menuItems" :key="index" class="nav-item my_item">
+                        <li v-for="(item, index) in menuItems" :key="index" class="nav-item my-item">
                             <b><router-link :to="{ name: item.routeName }" class="nav-link text-white">
                                     {{ item.label }}
                                 </router-link></b>
@@ -50,11 +50,11 @@ export default {
                                 :href="store.urlBackend + 'register/'" target="_blank"><b>ADMIN</b></a></li> -->
                     </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-link text-white my_name">GABRIEL PINO</li>
+                        <li class="nav-link text-white my-name">GABRIEL PINO</li>
                     </ul>
                     <ul class="navbar-nav">
-                        <a><router-link class="nav-link text-white my_contact"
-                                :class="{ active: $route.name == 'Contatti' }"
+                        <a><router-link class="nav-link text-white my-contact"
+                                :class="{ clicked: $route.name == 'Contatti' }"
                                 :to="{ name: 'Contatti' }">Contattami</router-link></a>
                     </ul>
                 </div>
@@ -73,25 +73,14 @@ export default {
 </style>
 
 <style scoped lang="scss">
-.my_bg {
-    background-color: #06091880;
-    border: 2px solid #6629b6;
-    border-radius: 2rem;
-}
-
-.navbar-toggler {
-    background-color: #6629b6 !important;
-    border-radius: 2rem;
-}
-
-.my_name {
+.my-name {
     font-size: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-style: italic;
     letter-spacing: 2px;
 }
 
-.my_contact {
+.my-contact {
     text-decoration: none;
     border: 1px solid white;
     padding: 10px;
@@ -99,40 +88,21 @@ export default {
     cursor: pointer;
 }
 
-.my_contact:hover {
-    background-color: #784adb;
-    border: 1px solid #784adb;
-    transform: scale(1.1);
-}
-
-.active {
-    background-color: #784adb;
-    border: 1px solid #784adb;
-    transform: scale(1.1);
-}
-
-
-
-.my_item:hover {
-    border-bottom: 3px solid #784adb;
-    transform: scale(1.1);
-}
-
 @media screen and (max-width: 991px) {
-    .my_item:hover {
+    .my-item:hover {
         width: 30%;
         transform: scale(1);
     }
 
-    .my_contact:hover {
+    .my-contact:hover {
         transform: scale(1);
     }
 
-    .my_contact {
+    .my-contact {
         display: inline-block;
     }
 
-    .active {
+    .clicked {
         transform: scale(1);
     }
 }

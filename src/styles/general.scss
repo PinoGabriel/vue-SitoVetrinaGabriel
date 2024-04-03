@@ -7,8 +7,14 @@
     padding: 0;
 }
 
-body {
+body.theme-purple {
     background-color: #060918;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+body.theme-orange {
+    background-color: #3b2000;
     color: white;
     font-family: "Montserrat", sans-serif;
 }
@@ -25,17 +31,157 @@ body {
     padding-top: 8rem;
 }
 
-.my_color_purple {
-    color: #784adb;
+
+// header
+
+.theme-options {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    text-align: right;
+    padding: 1rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+
+    p {
+        margin: 0;
+    }
+
+    div {
+        cursor: pointer;
+        width: 25px;
+        height: 40px;
+        border-radius: 4px;
+        margin: 2px 10px;
+        display: inline-block;
+        opacity: 0.5;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    #theme-purple {
+        background-color: #784adb;
+    }
+
+    #theme-orange {
+        background-color: #ff8a00;
+    }
 }
 
-.btn-primary {
-    background-color: #784adb;
-    border: none;
-    transition: ease-in 0.2s;
+#app.theme-purple {
+
+    .my_color_purple {
+        color: #784adb;
+    }
+
+    .btn-primary {
+        background-color: #784adb;
+        border: none;
+        transition: ease-in 0.2s;
+    }
+
+    .btn-primary:hover {
+        background-color: #3f139e;
+        transform: scale(1.2);
+    }
+
+    .my-btn-about {
+        color: #784adb;
+        border: 1px solid #3F139E;
+        background-color: #3f139e52;
+    }
+
+    .developer:hover+.designer {
+        display: block;
+        color: #3F139E;
+    }
+
+    .my-bg {
+        background-color: #06091880;
+        border: 2px solid #6629b6;
+        border-radius: 2rem;
+    }
+
+    .navbar-toggler {
+        background-color: #6629b6 !important;
+        border-radius: 2rem;
+    }
+
+    .my-contact:hover {
+        background-color: #784adb;
+        border: 1px solid #784adb;
+        transform: scale(1.1);
+    }
+
+    .clicked {
+        background-color: #784adb;
+        border: 1px solid #784adb;
+        transform: scale(1.1);
+    }
+
+    .my-item:hover {
+        border-bottom: 3px solid #784adb;
+        transform: scale(1.1);
+    }
 }
 
-.btn-primary:hover {
-    background-color: #3f139e;
-    transform: scale(1.2);
+#app.theme-orange {
+    .my_color_purple {
+        color: #d8873a;
+    }
+
+    .btn-primary {
+        background-color: #d8873a;
+        border: none;
+        transition: ease-in 0.2s;
+    }
+
+    .btn-primary:hover {
+        background-color: #613c19;
+        transform: scale(1.2);
+    }
+
+    .my-btn-about {
+        color: #d8873a;
+        border: 1px solid #613c19;
+        background-color: #613c193f;
+    }
+
+    .developer:hover+.designer {
+        display: block;
+        color: #613c19;
+    }
+
+    .my-bg {
+        background-color: #18110680;
+        border: 2px solid #b67929;
+        border-radius: 2rem;
+    }
+
+    .navbar-toggler {
+        background-color: #b67929 !important;
+        border-radius: 2rem;
+    }
+
+    .my-contact:hover {
+        background-color: #d8873a;
+        border: 1px solid #d8873a;
+        transform: scale(1.1);
+    }
+
+    .clicked {
+        background-color: #d8873a;
+        border: 1px solid #d8873a;
+        transform: scale(1.1);
+    }
+
+    .my-item:hover {
+        border-bottom: 3px solid #d8873a;
+        transform: scale(1.1);
+    }
 }
