@@ -10,7 +10,7 @@ export default {
   },
   data() {
     return {
-      currentTheme: localStorage.getItem('theme-color'),
+      currentTheme: localStorage.getItem('theme-color') || 'theme-purple',
       showThemeOptions: false
     }
   },
@@ -23,7 +23,7 @@ export default {
     }
   },
   created() {
-    document.body.className = this.currentTheme;
+    document.body.className = this.currentTheme || 'theme-purple';
     if (this.$route.path === '/impostazioni') {
       this.showThemeOptions = true;
     }
@@ -47,22 +47,24 @@ export default {
 <template>
   <div id="app" :class="currentTheme">
     <AppHeader />
-    <div class="container d-flex justify-content-center mt-5" v-if="showThemeOptions">
-      <div class="theme-options my-bg">
-        <section class="d-flex align-items-center">
-          <p class="fw-bold">Cambia Tema</p>
-          <div id="theme-purple" :class="{ 'active': currentTheme === 'theme-purple' }"
-            @click="switchTheme('theme-purple')">
-          </div>
-          <div id="theme-orange" :class="{ 'active': currentTheme === 'theme-orange' }"
-            @click="switchTheme('theme-orange')"></div>
-          <div id="theme-green" :class="{ 'active': currentTheme === 'theme-green' }"
-            @click="switchTheme('theme-green')">
-          </div>
-        </section>
+    <main>
+      <div class="container d-flex justify-content-center mt-5" v-if="showThemeOptions">
+        <div class="theme-options my-bg">
+          <section class="d-flex align-items-center">
+            <p class="fw-bold">Cambia Tema</p>
+            <div id="theme-purple" :class="{ 'active': currentTheme === 'theme-purple' }"
+              @click="switchTheme('theme-purple')">
+            </div>
+            <div id="theme-orange" :class="{ 'active': currentTheme === 'theme-orange' }"
+              @click="switchTheme('theme-orange')"></div>
+            <div id="theme-green" :class="{ 'active': currentTheme === 'theme-green' }"
+              @click="switchTheme('theme-green')">
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-    <router-view></router-view>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 

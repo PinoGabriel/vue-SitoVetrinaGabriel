@@ -1,6 +1,7 @@
 @use './partials/variables' as *;
 @import "bootstrap/scss/bootstrap";
 
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -35,6 +36,10 @@ body.theme-green {
 
 .pt-10 {
     padding-top: 8rem;
+}
+
+.py-10 {
+    padding: 8rem 0;
 }
 
 
@@ -78,8 +83,18 @@ body.theme-green {
 
 #app.theme-purple {
 
+
     .my_color_purple {
         color: #784adb;
+    }
+
+    .swiper-pagination-progressbar-fill {
+        background-color: #784adb !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-color: #060918 !important;
     }
 
     .btn-primary {
@@ -136,6 +151,15 @@ body.theme-green {
 #app.theme-orange {
     .my_color_purple {
         color: #d8873a;
+    }
+
+    .swiper-pagination-progressbar-fill {
+        background-color: #d8873a !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-color: #3b2000 !important;
     }
 
     .btn-primary {
@@ -195,6 +219,15 @@ body.theme-green {
         color: #3bae82;
     }
 
+    .swiper-pagination-progressbar-fill {
+        background-color: #3bae82 !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-color: #051810 !important;
+    }
+
     .btn-primary {
         background-color: #3bae82;
         border: none;
@@ -244,4 +277,13 @@ body.theme-green {
         border-bottom: 3px solid #3bae82;
         transform: scale(1.1);
     }
+}
+
+
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white !important;
+    padding: 2rem;
+    border-radius: 2rem;
 }

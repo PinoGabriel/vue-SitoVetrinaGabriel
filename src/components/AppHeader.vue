@@ -65,10 +65,6 @@ export default {
             </div>
         </nav>
     </header>
-
-    <main>
-
-    </main>
 </template>
 
 <style lang="scss">

@@ -112,7 +112,7 @@ export default {
             'blur-effect': submitSuccess || submitError
         }">
             <h5 class="my_color_purple col-xl-6">Compila il form per mandarmi un messaggio:</h5>
-            <form class="mt-5 col-xl-6" @submit.prevent="VueSubmitForm" method="post">
+            <form class="mt-5 col-xl-6 pb-5" @submit.prevent="VueSubmitForm" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome*</label>
                     <input type="text" class="form-control" id="username" name="name" v-model="formData.name" required>
